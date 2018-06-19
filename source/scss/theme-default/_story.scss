@@ -1,0 +1,443 @@
+/* style for story */
+
+.story {
+    @include clearfix;
+    &__thumb {}
+    &__title {
+        @include font-size(16, 21);
+        font-weight: normal;
+        margin-bottom: 10px;
+        a {
+            color: $gray-base;
+            &:hover {
+                color: $brand-primary;
+            }
+        }
+    }
+    &__summary {
+        color: #777;
+        overflow: hidden;
+    }
+    &__meta {
+        color: #777;
+        margin-bottom: 5px;
+    }
+    /* 
+        story kind
+    */
+    &--highlight {
+        .story__title {
+            padding: 10px;
+            background-color: $brand-success;
+            font-size: 18px;
+            margin-bottom: 0;
+            a {
+                color: white;
+                &:hover {
+                    color: #ddd;
+                }
+            }
+            .zone--highlight & {
+                padding: 0 10px;
+                line-height: 50px;
+                height: 50px;
+                width: 550px;
+                overflow: hidden;
+            }
+        }
+    }
+    &--featured {
+        .story__thumb {}
+        .story__title {
+            padding: 10px;
+            @include font-size(16, 22);
+            font-weight: bold;
+            background: #f0f0f0;
+            // border: 1px solid #ddd;
+            // border-top: none;
+            a {
+                color: black;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+    &--horizontal {
+        .story__thumb {
+            float: left;
+            margin-right: 10px;
+        }
+    }
+    &--border {
+        padding-top: 10px;
+        border-top: 1px solid #ddd;
+        &:first-child {
+            border-top: none;
+        }
+    }
+    &--bullet {
+        .story__title {
+            position: relative;
+            padding-left: 15px;
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                border-radius: 50%;
+                width: 4px;
+                height: 4px;
+                background-color: #c4c4c4;
+                left: 0;
+                top: 7px;
+            }
+        }
+    }
+    &--serif {
+        .story__title {
+            font-family: $font-family-tinos, Helvetica, Arial, sans-serif;
+            a {
+                color: black;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+    &--category {
+        margin-bottom: 20px;
+        .story__thumb {
+            float: left;
+            margin-right: 10px;
+        }
+        .story__header {
+            height: 250px;
+        }
+        .story__title {
+            @include font-size(18, 25);
+            max-height: 50px;
+            font-weight: bold;
+        }
+    }
+    /* 
+        story position
+     */
+    // story in zone listing
+    .zone__listing & {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .featured-area & {
+        .story__title {
+            a {
+                color: black;
+                &:hover {
+                    color: $brand-primary;
+                }
+            }
+        }
+    }
+    .zone__half & {
+        .story__title {
+            margin-bottom: 0;
+        }
+    }
+    .zone__half.zone__listing & {
+        margin-bottom: 15px;
+    }
+    .category__listing & {
+        margin-bottom: 10px;
+        .story__title {
+            font-weight: bold;
+        }
+        .story__thumb {
+            float: left;
+            margin-right: 10px;
+        }
+        padding-top: 15px;
+        border-top: 1px solid #ddd;
+        &:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+    }
+    .related-story {
+        .title {
+            font-size: 14px !important;
+            line-height: 1.9rem !important;
+            font-weight: normal !important;
+        }
+    }
+    // story with bold title
+    &.story-bold {
+        .title {
+            font-weight: bold;
+        }
+    }
+    // story cover
+    &.story-cover {
+        .title {
+            @include font-size(16, 22);
+            font-weight: bold;
+        }
+        .highlight-zone & {
+            .title {
+                @include font-size(20, 28);
+            }
+        }
+    }
+    // story video
+    &.story-video {
+        .thumb {
+            position: relative;
+            &::after {
+                position: absolute;
+                top: 7px;
+                left: 7px;
+                content: '';
+                display: block;
+                font-size: 24px;
+                line-height: 1em;
+                font-family: "fontawesome";
+                color: white;
+                opacity: .5;
+                text-shadow: 1px 1px 2px #000;
+            }
+        }
+    }
+    // story with bullet 
+    &.story-bullet {
+        margin-bottom: 8px;
+        @include last-child-y;
+        .title {
+            &::before {
+                content: '';
+                display: inline;
+                margin-right: 5px;
+                font-family: "fontawesome";
+            }
+        }
+    }
+    /* story in zone  */
+    // latest zone
+    .latest-zone & {
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        @include last-child-y();
+    }
+    // ranking zone
+    .story-listing &,
+    .ranking-zone & {
+        margin-bottom: 10px;
+        @include last-child-y();
+    }
+    .ranking-zone & {
+        position: relative;
+        .ranking {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            font-family: $font-family-special;
+            @include font-size(44, 25);
+            color: #ddd;
+            opacity: 0.6;
+            z-index: -1;
+            @include respond-to-sm() {
+                // right: 10px;
+            }
+        }
+    }
+    // normal zone
+    .normal-zone & {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+        @include last-child-y();
+    }
+    // red title
+    .red-title & {
+        margin-bottom: 10px;
+        @include respond-to-md() {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/* home featured slider */
+
+.slider {
+    &__item {
+        position: relative;
+    }
+    &__info {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background-color: rgba(29, 97, 167, 0.9);
+    }
+    &__title {
+        @include font-size(18, 24);
+        a {
+            color: white;
+            &:hover {
+                color: #ccc;
+            }
+        }
+    }
+    &__summary {
+        @include font-size(14, 19);
+        color: #aaa;
+    }
+    &__next,
+    &__prev {
+        position: absolute;
+        width: 24px;
+        height: 48px;
+        font-size: 24px;
+        line-height: 48px;
+        text-align: center;
+        color: white;
+        top: 50%;
+        margin-top: -24px;
+        background-color: #000;
+        opacity: .5;
+        @include transition(opacity, 0.2, ease);
+        a {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        &:hover {
+            opacity: .8;
+        }
+        &:active {
+            margin-top: -23px;
+        }
+    }
+    &__next {
+        right: 0;
+    }
+    &__pager {
+        @include clearfix();
+        > a {
+            // float: left;
+            display: inline-block;
+            margin: 0 3px;
+            width: 8px;
+            height: 8px;
+            background-color: #888;
+            &.active {
+                background-color: #FFF;
+            }
+        }
+    }
+}
+
+
+/* sponsor */
+
+.sponsor {
+    @include clearfix();
+    &__item {
+        float: left;
+        width: 180px;
+        height: 135px;
+        background: white;
+        border: 1px solid #ddd;
+        margin-left: 20px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 105px;
+        padding: 15px;
+        &:first-child {
+            margin-left: 0;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+
+/* topic */
+
+.topic {
+    &__item {
+        margin-bottom: 10px;
+        padding-left: 15px;
+        background: url(../img/red-bullet.png) left 6px no-repeat;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/* listing */
+
+.listing {
+    @include clearfix;
+    &__item {
+        float: left;
+        width: 50%;
+        vertical-align: top;
+        margin-bottom: 15px;
+        &.has-bullet {
+            position: relative;
+            padding-left: 15px;
+            &::before {
+                content: '';
+                display: block;
+                position: absolute;
+                border-radius: 50%;
+                width: 4px;
+                height: 4px;
+                background-color: #c4c4c4;
+                left: 0;
+                top: 7px;
+            }
+        }
+    }
+    &--grid {
+        .listing__item {
+            width: 310px;
+            margin-right: 25px;
+            margin-bottom: 25px;
+            position: relative;
+            img {
+                width: 100%;
+                height: auto;
+            }
+            a {
+                &::before {
+                    display: block;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    background: black;
+                    opacity: 0;
+                    @include transition(all, 0.2, ease);
+                }
+                &:hover {
+                    &::before {
+                        opacity: 0.2;
+                    }
+                }
+            }
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
